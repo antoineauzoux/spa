@@ -6,6 +6,11 @@ create database refuge;
 use refuge;
 
 #------------------------------------------------------------
+#        Script MySQL.
+#------------------------------------------------------------
+
+
+#------------------------------------------------------------
 # Table: race
 #------------------------------------------------------------
 
@@ -13,17 +18,6 @@ CREATE TABLE race(
         idRace  Int  Auto_increment  NOT NULL ,
         nomRace Varchar (100) NOT NULL
 	,CONSTRAINT race_PK PRIMARY KEY (idRace)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: typeCompte
-#------------------------------------------------------------
-
-CREATE TABLE typeCompte(
-        idTypeCompte Int  Auto_increment  NOT NULL ,
-        labelCompte  Varchar (20) NOT NULL
-	,CONSTRAINT typeCompte_PK PRIMARY KEY (idTypeCompte)
 )ENGINE=InnoDB;
 
 
@@ -42,9 +36,9 @@ CREATE TABLE caracteristiques(
 # Table: avoir
 #------------------------------------------------------------
 
-CREATE TABLE raceCaracteristique(
-        idRaceChien             Int NOT NULL ,
-        idCaracteristiquesRace Int NOT NULL
+CREATE TABLE avoir(
+        idRace             Int NOT NULL ,
+        idCaracteristiques Int NOT NULL
 	,CONSTRAINT avoir_PK PRIMARY KEY (idRace,idCaracteristiques)
 )ENGINE=InnoDB;
 
@@ -71,8 +65,7 @@ CREATE TABLE chien(
 CREATE TABLE compte(
         loginCompte    Varchar (100) NOT NULL ,
         passwordCompte Varchar (200) NOT NULL ,
-        idUtilisateur  Int NOT NULL ,
-        idTypeCompte   Int NOT NULL
+        idUtilisateur  Int NOT NULL
 	,CONSTRAINT compte_PK PRIMARY KEY (loginCompte)
 )ENGINE=InnoDB;
 
@@ -85,19 +78,20 @@ CREATE TABLE utilisateur(
         idUtilisateur     Int  Auto_increment  NOT NULL ,
         nomUtilisateur    Varchar (50) NOT NULL ,
         prenomUtilisateur Varchar (50) NOT NULL ,
-        mailUtilisateur   Varchar (100) NOT NULL
-        ,CONSTRAINT utilisateur_PK PRIMARY KEY (idUtilisateur)
+        mailUtilisateur   Varchar (100) NOT NULL ,
+        loginCompte       Varchar (100) NOT NULL
+	,CONSTRAINT utilisateur_PK PRIMARY KEY (idUtilisateur)
 )ENGINE=InnoDB;
 
 
 
 
-ALTER TABLE raceCaracteristique
+ALTER TABLE avoir
 	ADD CONSTRAINT avoir_race0_FK
 	FOREIGN KEY (idRace)
 	REFERENCES race(idRace);
 
-ALTER TABLE raceCaracteristique
+ALTER TABLE avoir
 	ADD CONSTRAINT avoir_caracteristiques1_FK
 	FOREIGN KEY (idCaracteristiques)
 	REFERENCES caracteristiques(idCaracteristiques);
@@ -117,11 +111,15 @@ ALTER TABLE compte
 	FOREIGN KEY (idUtilisateur)
 	REFERENCES utilisateur(idUtilisateur);
 
-ALTER TABLE compte
-	ADD CONSTRAINT compte_typeCompte1_FK
-	FOREIGN KEY (idTypeCompte)
-	REFERENCES typeCompte(idTypeCompte);
-
 ALTER TABLE compte 
 	ADD CONSTRAINT compte_utilisateur0_AK 
 	UNIQUE (idUtilisateur);
+
+ALTER TABLE utilisateur
+	ADD CONSTRAINT utilisateur_compte0_FK
+	FOREIGN KEY (loginCompte)
+	REFERENCES compte(loginCompte);
+
+ALTER TABLE utilisateur 
+	ADD CONSTRAINT utilisateur_compte0_AK 
+	UNIQUE (loginCompte);
