@@ -126,3 +126,6 @@ hs_err_pid*
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,java
 /.idea/
+src/test/java/persistence/
+target/generated-sources/
+target/generated-test-sources/
