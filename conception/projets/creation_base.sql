@@ -92,12 +92,12 @@ CREATE TABLE utilisateur(
 
 
 
-ALTER TABLE avoir
+ALTER TABLE raceCaracteristique
 	ADD CONSTRAINT avoir_race0_FK
 	FOREIGN KEY (idRace)
 	REFERENCES race(idRace);
 
-ALTER TABLE avoir
+ALTER TABLE raceCaracteristique
 	ADD CONSTRAINT avoir_caracteristiques1_FK
 	FOREIGN KEY (idCaracteristiques)
 	REFERENCES caracteristiques(idCaracteristiques);
