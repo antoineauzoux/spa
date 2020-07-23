@@ -17,7 +17,7 @@ import java.util.List;
 @Repository
 public class UtilisateurDaoImp implements IUtilisateurDao {
 
-    private Connection connection;
+    private final Connection connection;
 
     @Autowired
     public UtilisateurDaoImp(@Qualifier("connexionMysql") IDatabaseConnection databaseConnection) {
@@ -67,7 +67,7 @@ public class UtilisateurDaoImp implements IUtilisateurDao {
         Utilisateur vUser = new Utilisateur();
         try {
             PreparedStatement ps = connection.prepareStatement(
-                    "select idUtilisateur, nomUtilisateur, prenomUtilisateur, mailUtilisateur from utilisateur where idUtilisateur=" + pId );
+                    "select idUtilisateur, nomUtilisateur, prenomUtilisateur, mailUtilisateur from utilisateur where idUtilisateur=" + pId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 vUser.setId(rs.getInt("idUtilisateur"));

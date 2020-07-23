@@ -10,5 +10,5 @@ package com.cda.util;
  *
  */
 public enum ContextConfigurationType {
-    FILE_SYSTEM, CLASSPATH, XML_WEBAPPLICATION_CONTEXT;
+    FILE_SYSTEM, CLASSPATH, XML_WEBAPPLICATION_CONTEXT
 }
