@@ -1,6 +1,5 @@
 package com.cda.bean;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

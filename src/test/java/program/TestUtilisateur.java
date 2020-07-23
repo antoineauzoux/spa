@@ -54,7 +54,7 @@ class TestUtilisateur {
         List<Utilisateur> list = utilisateurDao.selectAll();
 
         Utilisateur user1 = list.get(0);
-        Utilisateur user2 = utilisateurDao.findById(user1.getId());
+        Utilisateur user2 = utilisateurDao.findByUser(user1);
 
         Assert.assertNotNull(user2);
     }
@@ -71,7 +71,9 @@ class TestUtilisateur {
     @Test
     @Order(5)
     public void testDelete() {
-        utilisateurDao.deleteById(utilisateurDao.findById(1));
-        Assert.assertEquals(1L, utilisateurDao.selectAll().size());
+        Utilisateur vUser = new Utilisateur("testNom", "testPrenom", "testMail");
+        utilisateurDao.create(vUser);
+        utilisateurDao.deleteById(utilisateurDao.findByUser(vUser));
+        Assert.assertEquals(3, utilisateurDao.selectAll().size());
     }
 }
