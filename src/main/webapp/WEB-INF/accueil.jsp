@@ -283,7 +283,7 @@
 
                 <!--Body-->
                 <div class="modal-body">
-                    <div class="md-form mb-5">
+                    <div class="md-form">
                         <input type="text" id="nom" name="nom" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="nom">Nom</label>
                     </div>
@@ -294,7 +294,7 @@
                     </div>
 
                     <div class="md-form">
-                        <input type="text" id="mail" name="mail" class="form-control validate">
+                        <input type="email" id="mail" name="mail" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="mail">Email</label>
                     </div>
 
@@ -308,7 +308,6 @@
                         <label data-error="wrong" data-success="right" for="password">Mot de passe</label>
                     </div>
                 </div>
-
 
                 <!--Footer-->
                 <div class="modal-footer justify-content-center">

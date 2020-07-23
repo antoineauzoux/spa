@@ -7,31 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-<<<<<<< HEAD
-<<<<<<< HEAD:src/main/java/com/cda/controleur/AcceuilServlet.java
 @WebServlet("/Acceuil")
 public class AcceuilServlet extends HttpServlet {
-=======
-@WebServlet("/DashboardServlet")
-public class DashboardServlet extends HttpServlet {
->>>>>>> dev:src/main/java/com/cda/controleur/DashboardServlet.java
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.getServletContext().getRequestDispatcher("/WEB-INF/acceuil.jsp").forward(request, response);
-=======
-@WebServlet("/accueil")
-public class AcceuilServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         this.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
-    }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String identifiant = request.getParameter("identifiant");
-        String password = request.getParameter("password");
-        this.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
->>>>>>> dev
     }
 }
