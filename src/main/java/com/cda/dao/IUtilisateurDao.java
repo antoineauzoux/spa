@@ -15,4 +15,6 @@ public interface IUtilisateurDao {
     Utilisateur findById(int pId);
 
     List<Utilisateur> selectAll();
+
+    void deleteAll();
 }

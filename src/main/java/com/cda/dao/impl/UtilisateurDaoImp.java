@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -99,5 +96,17 @@ public class UtilisateurDaoImp implements IUtilisateurDao {
             e.printStackTrace();
         }
         return usersList;
+    }
+
+    @Override
+    public void deleteAll() {
+        Statement s = null;
+        try {
+            s = connection.createStatement();
+            s.execute("delete from utilisateur");
+            s.execute("alter table utilisateur AUTO_INCREMENT = 0");
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
     }
 }

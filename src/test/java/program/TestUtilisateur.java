@@ -5,10 +5,7 @@ import com.cda.dao.IUtilisateurDao;
 import com.cda.util.ContextConfigurationType;
 import com.cda.util.ContextFactory;
 import org.junit.Assert;
-import org.junit.FixMethodOrder;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.junit.runners.MethodSorters;
+import org.junit.jupiter.api.*;
 import org.springframework.context.ApplicationContext;
 
 import java.util.List;
@@ -16,7 +13,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class TestUtilisateur {
 
     private static IUtilisateurDao utilisateurDao;
@@ -28,22 +25,32 @@ class TestUtilisateur {
     }
 
     @Test
-    public void a() {
+    @Order(0)
+    public void testViderTable() {
+        utilisateurDao.deleteAll();
+        Assert.assertEquals(0, utilisateurDao.selectAll().size());
+    }
+
+    @Test
+    @Order(1)
+    public void testCreate() {
         utilisateurDao.create(new Utilisateur("john", "malkovich", "jm@gmail.com"));
         utilisateurDao.create(new Utilisateur("bobo", "leclown", "bobo@gmail.com"));
         Assert.assertEquals(2, utilisateurDao.selectAll().size());
     }
 
     @Test
-    public void b() {
+    @Order(2)
+    public void testSelectAll() {
         List<Utilisateur> list = utilisateurDao.selectAll();
         assertNotNull(list);
-        assertNotEquals(0,list.size());
+        assertNotEquals(0, list.size());
         assertNotNull(list.get(0));
     }
 
     @Test
-    public void c() {
+    @Order(3)
+    public void testFindById() {
         List<Utilisateur> list = utilisateurDao.selectAll();
 
         Utilisateur user1 = list.get(0);
@@ -53,7 +60,8 @@ class TestUtilisateur {
     }
 
     @Test
-    public void d() {
+    @Order(4)
+    public void testUpdate() {
         List<Utilisateur> list = utilisateurDao.selectAll();
         Utilisateur user1 = list.get(0);
         utilisateurDao.update(user1);
@@ -61,7 +69,8 @@ class TestUtilisateur {
     }
 
     @Test
-    public void e() {
+    @Order(5)
+    public void testDelete() {
         utilisateurDao.deleteById(utilisateurDao.findById(1));
         Assert.assertEquals(1L, utilisateurDao.selectAll().size());
     }
