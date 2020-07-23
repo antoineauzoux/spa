@@ -18,7 +18,7 @@ import java.util.List;
 public class ChienDaoImp implements IChienDao {
 
 
-    private Connection connection;
+    private final Connection connection;
 
     @Autowired
     public ChienDaoImp( @Qualifier("connexionMysql") IDatabaseConnection databaseConnection) {
@@ -62,7 +62,7 @@ public class ChienDaoImp implements IChienDao {
     @Override
     public Chien findById(int id) {
         try {
-            String request = "select * from clients where id_client = ?";
+            String request = "select * from chien   where puceChien = ?";
             PreparedStatement ps = connection.prepareStatement(request);
             ps.setInt(1, id );
             ResultSet r = ps.executeQuery();
@@ -87,7 +87,7 @@ public class ChienDaoImp implements IChienDao {
     @Override
     public void create(Chien p) {
         try {
-            String request = "INSERT INTO chien (puceChien, nomChien, couleurChien, ageChien ) VALUES (?,?,?,?)";
+            String request = "INSERT INTO chien (puceChien, nomChien, couleurChien, ageChien,idRace,idUtilisateur ) VALUES (?,?,?,?,?,?)";
             PreparedStatement ps = connection.prepareStatement(request);
             ps.setInt(1, p.getPuceChien());
             ps.setString(2, p.getNom());
@@ -102,7 +102,7 @@ public class ChienDaoImp implements IChienDao {
     @Override
     public void update(Chien p) {
         try {
-            PreparedStatement ps = connection.prepareStatement("update chien set nomChien = ?, couleurChien = ?, ageChien = ? where id = ?");
+            PreparedStatement ps = connection.prepareStatement("update chien set nomChien = ?, couleurChien = ?, ageChien = ? where puceChien = ?");
             ps.setString(1, p.getNom());
             ps.setString(2, p.getCouleur());
             ps.setInt(3, p.getAge());

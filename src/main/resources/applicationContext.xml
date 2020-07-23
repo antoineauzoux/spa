@@ -13,19 +13,7 @@
 		base-package="com.cda">
 		<context:include-filter type="regex"
 			expression="(\..*)*" />
-		<!-- <context:exclude-filter type="annotation" -->
-		<!-- expression="org.springframework.stereotype.Repository" /> -->
 	</context:component-scan>
-<!-- 	<context:component-scan base-package="service"> -->
-<!-- 		<context:include-filter type="regex" -->
-<!-- 			expression="\..*" /> -->
-<!-- 	</context:component-scan> -->
-<!-- 	<context:component-scan -->
-<!-- 		base-package="persistence"> -->
-<!-- 		<context:include-filter type="regex" -->
-<!-- 			expression="\..*" /> -->
-<!-- 	</context:component-scan> -->
-
 <context:property-placeholder location="classpath:database-postgresql.properties" ignore-unresolvable="true" /> 
 <context:property-placeholder location="classpath:database-mysql.properties" ignore-unresolvable="true" /> 
 

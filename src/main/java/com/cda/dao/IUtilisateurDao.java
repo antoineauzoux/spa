@@ -6,13 +6,13 @@ import java.util.List;
 
 public interface IUtilisateurDao {
 
-    public void create(Utilisateur pUser);
+    void create(Utilisateur pUser);
 
-    public void update(Utilisateur pUser);
+    void update(Utilisateur pUser);
 
-    public void deleteById(Utilisateur pUser);
+    void deleteById(Utilisateur pUser);
 
-    public Utilisateur findById(int pId);
+    Utilisateur findById(int pId);
 
-    public List<Utilisateur> selectAll();
+    List<Utilisateur> selectAll();
 }
