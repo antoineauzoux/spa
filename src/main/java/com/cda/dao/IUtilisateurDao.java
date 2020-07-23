@@ -12,9 +12,11 @@ public interface IUtilisateurDao {
 
     void deleteById(Utilisateur pUser);
 
-    Utilisateur findById(int pId);
+    Utilisateur findByUser(Utilisateur pUser);
 
     List<Utilisateur> selectAll();
 
     void deleteAll();
+
+    Utilisateur findById(int pId);
 }

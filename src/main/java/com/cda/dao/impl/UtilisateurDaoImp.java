@@ -60,11 +60,14 @@ public class UtilisateurDaoImp implements IUtilisateurDao {
     }
 
     @Override
-    public Utilisateur findById(int pId) {
+    public Utilisateur findByUser(Utilisateur pUser) {
         Utilisateur vUser = new Utilisateur();
         try {
             PreparedStatement ps = connection.prepareStatement(
-                    "select idUtilisateur, nomUtilisateur, prenomUtilisateur, mailUtilisateur from utilisateur where idUtilisateur=" + pId);
+                    "select * from utilisateur where nomUtilisateur = ? and prenomUtilisateur = ? and mailUtilisateur = ?");
+            ps.setString(1, pUser.getNom());
+            ps.setString(2, pUser.getPrenom());
+            ps.setString(3, pUser.getEmail());
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 vUser.setId(rs.getInt("idUtilisateur"));
@@ -108,5 +111,25 @@ public class UtilisateurDaoImp implements IUtilisateurDao {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    @Override
+    public Utilisateur findById(int pId) {
+        Utilisateur vUser = new Utilisateur();
+        try {
+            PreparedStatement ps = connection.prepareStatement(
+                    "select * from utilisateur where idUtilisateur = ?");
+            ps.setInt(1, pId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                vUser.setId(rs.getInt("idUtilisateur"));
+                vUser.setNom(rs.getString("nomUtilisateur"));
+                vUser.setPrenom(rs.getString("prenomUtilisateur"));
+                vUser.setEmail(rs.getString("mailUtilisateur"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return vUser;
     }
 }

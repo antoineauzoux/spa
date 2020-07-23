@@ -6,13 +6,15 @@ import java.util.List;
 
 public interface IUtilisateurService {
 
-    void create(Utilisateur pUser);
-
     void update(Utilisateur pUser);
 
     void deleteById(Utilisateur pUser);
 
-    Utilisateur findById(int pId);
+    Utilisateur findByUser(Utilisateur pUser);
 
     List<Utilisateur> selectAll();
+
+    void create(String nom, String prenom, String mail, String login, String password);
+
+    Utilisateur findById(int pId);
 }
