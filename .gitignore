@@ -130,4 +130,8 @@ src/test/java/persistence/
 target/generated-sources/
 target/generated-test-sources/
 /.idea/
+<<<<<<< HEAD
 /target/
+=======
+/target/
+>>>>>>> 0d76a76eafb193b0044b6e8074e9727632ce6c19
