@@ -87,7 +87,7 @@ public class ChienDaoImp implements IChienDao {
     @Override
     public void create(Chien p) {
         try {
-            String request = "INSERT INTO chien (puceChien, nomChien, couleurChien, ageChien ) VALUES (?,?,?,?)";
+            String request = "INSERT INTO chien (puceChien, nomChien, couleurChien, ageChien,idRace,idUtilisateur ) VALUES (?,?,?,?,?,?)";
             PreparedStatement ps = connection.prepareStatement(request);
             ps.setInt(1, p.getPuceChien());
             ps.setString(2, p.getNom());
