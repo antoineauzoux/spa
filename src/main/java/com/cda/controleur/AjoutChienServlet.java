@@ -22,7 +22,7 @@ import java.io.IOException;
         maxFileSize         = 1024 * 1024 * 10, // 10 MB
         maxRequestSize      = 1024 * 1024 * 15) // 15 MB
 public class AjoutChienServlet extends AbstractServletController {
-    public static final String IMAGES_FOLDER = "/img";
+    public static final String IMAGES_FOLDER = "assets/img";
     public String uploadPath;
 
     @Autowired

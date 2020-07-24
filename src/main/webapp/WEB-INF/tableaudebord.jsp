@@ -82,8 +82,8 @@ ${ sessionScope.prenom }
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><img class=" img-fluid"
-                                            src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png"
+                                    <p><img class="rounded-circle img-fluid"
+                                            src="assets/img/<%= monChien.getImage() %>"
                                             alt="card image"></p>
                                     <h4 class="card-title"><%= monChien.getNom() %>
                                     </h4>
@@ -238,7 +238,7 @@ ${ sessionScope.prenom }
                     </div>
 
                     <div class="md-form">
-                        <input type="numbre" id="ageChien" name="ageChien" class="form-control validate">
+                        <input type="number" id="ageChien" name="ageChien" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="ageChien">Âge du chien</label>
                     </div>
 

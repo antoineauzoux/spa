@@ -21,6 +21,25 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <script>
+        /* Cette fonction permet d'afficher une vignette pour chaque image sélectionnée */
+        function readFilesAndDisplayPreview(files) {
+            let imageList = document.querySelector('#list');
+            imageList.innerHTML = "";
+
+            for (let file of files) {
+                let reader = new FileReader();
+
+                reader.addEventListener("load", function (event) {
+                    let span = document.createElement('span');
+                    span.innerHTML = '<img height="60" src="' + event.target.result + '" />';
+                    imageList.appendChild(span);
+                });
+
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
 </head>
 <body>
 ${ sessionScope.nom }
@@ -63,8 +82,8 @@ ${ sessionScope.prenom }
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-                                    <p><img class=" img-fluid"
-                                            src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png"
+                                    <p><img class="rounded-circle img-fluid"
+                                            src="assets/img/<%= monChien.getImage() %>"
                                             alt="card image"></p>
                                     <h4 class="card-title"><%= monChien.getNom() %>
                                     </h4>
@@ -187,7 +206,7 @@ ${ sessionScope.prenom }
         </div>
     </div>
 </footer>
-<form method="post" action="AjoutChienServlet">
+<form method="post" action="AjoutChienServlet" enctype="multipart/form-data">
     <div class="modal fade" id="modalCreerChien" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-notify modal-warning" role="document">
@@ -219,12 +238,13 @@ ${ sessionScope.prenom }
                     </div>
 
                     <div class="md-form">
-                        <input type="numbre" id="ageChien" name="ageChien" class="form-control validate">
+                        <input type="number" id="ageChien" name="ageChien" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="ageChien">Âge du chien</label>
                     </div>
 
                     <div class="md-form">
-                        <input type="file" id="imgChien" name="imgChien" class="form-control validate">
+                        <input type="file" id="imgChien" name="imgChien" class="form-control validate" accept="image/*" multiple
+                               onchange="readFilesAndDisplayPreview(this.files);">
                     </div>
                 </div>
                 <!--Footer-->
