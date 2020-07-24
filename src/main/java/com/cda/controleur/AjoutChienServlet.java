@@ -52,7 +52,7 @@ public class AjoutChienServlet extends AbstractServletController {
         chien.setPuceChien(Integer.parseInt(request.getParameter("numeroPuce")));
         chien.setIdUtilisateur((Integer) request.getSession().getAttribute("id"));
             iChienService.create(chien);
-
+       this.getServletContext().getRequestDispatcher("/DashboardServlet").forward(request, response);
 
     }
 
