@@ -6,25 +6,10 @@
   Time: 16:42
   To change this template use File | Settings | File Templates.
 --%>
-<<<<<<< HEAD
-<%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-=======
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
->>>>>>> dev
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Home - Dog Dog</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/bootstrap/css/monCSS.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kaushan+Script">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
     <title>Title</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -36,16 +21,27 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700">
     <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <script>
+        /* Cette fonction permet d'afficher une vignette pour chaque image sélectionnée */
+        function readFilesAndDisplayPreview(files) {
+            let imageList = document.querySelector('#list');
+            imageList.innerHTML = "";
+
+            for (let file of files) {
+                let reader = new FileReader();
+
+                reader.addEventListener("load", function (event) {
+                    let span = document.createElement('span');
+                    span.innerHTML = '<img height="60" src="' + event.target.result + '" />';
+                    imageList.appendChild(span);
+                });
+
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
 </head>
 <body>
-<<<<<<< HEAD
-<section id="team-card" class="pb-5">
-    <div class="container">
-        <h5 class="section-title h1">OUR TEAM</h5>
-        <div class="row">
-            <!-- Team member -->
-            <div class="col-xs-12 col-sm-6 col-md-4">
-=======
 ${ sessionScope.nom }
 ${ sessionScope.prenom }
 
@@ -81,55 +77,22 @@ ${ sessionScope.prenom }
                 for (Chien monChien : listeChiens) {
             %>
             <div class="col-xs-12 col-sm-8 col-md-6">
->>>>>>> dev
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
                         <div class="frontside">
                             <div class="card">
                                 <div class="card-body text-center">
-<<<<<<< HEAD
-                                    <p><img class=" img-fluid" src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png" alt="card image"></p>
-                                    <h4 class="card-title">Sunlimetech</h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.</p>
-                                    <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
-=======
                                     <p><img class=" img-fluid"
                                             src="https://sunlimetech.com/portfolio/boot4menu/assets/imgs/team/img_01.png"
                                             alt="card image"></p>
                                     <h4 class="card-title"><%= monChien.getNom() %>
                                     </h4>
                                     <p class="card-text">Informations détaillées au dos de la carte.</p>
->>>>>>> dev
                                 </div>
                             </div>
                         </div>
                         <div class="backside">
                             <div class="card">
-<<<<<<< HEAD
-                                <div class="card-body text-center mt-4">
-                                    <h4 class="card-title">Sunlimetech</h4>
-                                    <p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fa fa-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fa fa-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fa fa-skype"></i>
-                                            </a>
-                                        </li>
-                                        <li class="list-inline-item">
-                                            <a class="social-icon text-xs-center" target="_blank" href="#">
-                                                <i class="fa fa-google"></i>
-                                            </a>
-=======
                                 <div class="card-body mt-4">
                                     <h4 class="card-title text-center "><%= monChien.getNom() %>.
                                     </h4>
@@ -150,7 +113,6 @@ ${ sessionScope.prenom }
                                             <button type="button" class="btn btn-warning btn-circle"><i
                                                     class="fa fa-times"></i>
                                             </button>
->>>>>>> dev
                                         </li>
                                     </ul>
                                 </div>
@@ -159,14 +121,6 @@ ${ sessionScope.prenom }
                     </div>
                 </div>
             </div>
-<<<<<<< HEAD
-
-        </div>
-    </div>
-</section>
-<!-- Team -->
-            <!-- ./Team member -->
-=======
             <%} %>
             <!-- ./Team member -->
         </div>
@@ -251,7 +205,7 @@ ${ sessionScope.prenom }
         </div>
     </div>
 </footer>
-<form method="post" action="AjoutChienServlet">
+<form method="post" action="AjoutChienServlet" enctype="multipart/form-data">
     <div class="modal fade" id="modalCreerChien" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-notify modal-warning" role="document">
@@ -288,7 +242,8 @@ ${ sessionScope.prenom }
                     </div>
 
                     <div class="md-form">
-                        <input type="file" id="imgChien" name="imgChien" class="form-control validate">
+                        <input type="file" id="imgChien" name="imgChien" class="form-control validate" accept="image/*" multiple
+                               onchange="readFilesAndDisplayPreview(this.files);">
                     </div>
                 </div>
                 <!--Footer-->
@@ -300,7 +255,6 @@ ${ sessionScope.prenom }
         </div>
     </div>
 </form>
->>>>>>> dev
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>

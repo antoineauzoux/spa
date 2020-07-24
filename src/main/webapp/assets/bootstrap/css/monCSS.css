@@ -5,43 +5,6 @@
     border-radius: 3px;
 }
 
-<<<<<<< HEAD
-@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-#team {
-    background: #eee !important;
-}
-
-.btn-primary:hover,
-.btn-primary:focus {
-    background-color: #108d6f;
-    border-color: #108d6f;
-    box-shadow: none;
-    outline: none;
-}
-
-.btn-primary {
-    color: #fff;
-    background-color: #007b5e;
-    border-color: #007b5e;
-}
-
-section {
-    padding: 60px 0;
-}
-
-section .section-title {
-    text-align: center;
-    color: #007b5e;
-    margin-bottom: 50px;
-    text-transform: uppercase;
-}
-
-#team-card .card {
-    border: none;
-    background: #ffffff;
-}
-
-=======
 @import url(‘https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css’);
 #team-carte{
     margin-left: 10%;
@@ -78,7 +41,6 @@ section .section-title {
     border: none;
     background: #FFFFFF;
 }
->>>>>>> dev
 .image-flip:hover .backside,
 .image-flip.hover .backside {
     -webkit-transform: rotateY(0deg);
@@ -88,10 +50,6 @@ section .section-title {
     transform: rotateY(0deg);
     border-radius: .25rem;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> dev
 .image-flip:hover .frontside,
 .image-flip.hover .frontside {
     -webkit-transform: rotateY(180deg);
@@ -99,10 +57,6 @@ section .section-title {
     -o-transform: rotateY(180deg);
     transform: rotateY(180deg);
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> dev
 .mainflip {
     -webkit-transition: 1s;
     -webkit-transform-style: preserve-3d;
@@ -115,10 +69,6 @@ section .section-title {
     transform-style: preserve-3d;
     position: relative;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> dev
 .frontside {
     position: relative;
     -webkit-transform: rotateY(0deg);
@@ -126,10 +76,6 @@ section .section-title {
     z-index: 2;
     margin-bottom: 30px;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> dev
 .backside {
     position: absolute;
     top: 0;
@@ -144,10 +90,6 @@ section .section-title {
     -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
     box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> dev
 .frontside,
 .backside {
     -webkit-backface-visibility: hidden;
@@ -165,27 +107,10 @@ section .section-title {
     transition: 1s;
     transform-style: preserve-3d;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> dev
 .frontside .card,
 .backside .card {
     min-height: 312px;
 }
-<<<<<<< HEAD
-
-.backside .card a {
-    font-size: 18px;
-    color: #007b5e !important;
-}
-
-.frontside .card .card-title,
-.backside .card .card-title {
-    color: #007b5e !important;
-}
-
-=======
 .backside .card a {
     font-size: 18px;
     color: #007B5E !important;
@@ -194,13 +119,10 @@ section .section-title {
 .backside .card .card-title {
     color: #007B5E !important;
 }
->>>>>>> dev
 .frontside .card .card-body img {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-<<<<<<< HEAD
-=======
 }
 
 .btn-circle.btn-xl {
@@ -225,5 +147,4 @@ section .section-title {
 .col-md-4 {
     width: 50%;
     height: 50%;
->>>>>>> dev
 }
