@@ -6,8 +6,15 @@
 }
 
 @import url(‘https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css’);
-#team {
-    background: #eee !important;
+#team-carte{
+    margin-left: 10%;
+    position: absolute;
+    z-index: 999;
+}
+
+.masthead {
+    postion: relative;
+    z-index: 0;
 }
 .btn-primary:hover,
 .btn-primary:focus {
@@ -116,4 +123,28 @@ section .section-title {
     width: 120px;
     height: 120px;
     border-radius: 50%;
+}
+
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 24px;
+    line-height: 1.33;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+
+.col-md-4 {
+    width: 50%;
+    height: 50%;
 }

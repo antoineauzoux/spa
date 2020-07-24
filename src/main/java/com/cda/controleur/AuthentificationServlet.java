@@ -40,7 +40,7 @@ public class AuthentificationServlet extends AbstractServletController {
             HttpSession session = request.getSession();
             session.setAttribute("nom", utilisateurService.findById(compteSession.getIdUtilisateur()).getNom());
             session.setAttribute("prenom", utilisateurService.findById(compteSession.getIdUtilisateur()).getPrenom());
-            this.getServletContext().getRequestDispatcher("/WEB-INF/tableaudebord.jsp").forward(request, response);
+            this.getServletContext().getRequestDispatcher("/DashboardServlet").forward(request, response);
         }
     }
 }
