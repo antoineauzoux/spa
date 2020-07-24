@@ -40,6 +40,7 @@ public class AuthentificationServlet extends AbstractServletController {
             HttpSession session = request.getSession();
             session.setAttribute("nom", utilisateurService.findById(compteSession.getIdUtilisateur()).getNom());
             session.setAttribute("prenom", utilisateurService.findById(compteSession.getIdUtilisateur()).getPrenom());
+            session.setAttribute("id", utilisateurService.findById(compteSession.getIdUtilisateur()).getId());
             this.getServletContext().getRequestDispatcher("/DashboardServlet").forward(request, response);
         }
     }

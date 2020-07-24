@@ -17,12 +17,11 @@ import java.io.IOException;
         fileSizeThreshold   = 1024 * 1024 * 1,  // 1 MB
         maxFileSize         = 1024 * 1024 * 10, // 10 MB
         maxRequestSize      = 1024 * 1024 * 15) // 15 MB
-
 public class FichierServlet extends AbstractServletController {
     /*
      * Chemin dans lequel les images seront sauvegardées.
      */
-    public static final String IMAGES_FOLDER = "/assets/img";
+    public static final String IMAGES_FOLDER = "/img";
 
     public String uploadPath;
 
@@ -39,7 +38,7 @@ public class FichierServlet extends AbstractServletController {
         for ( Part part : request.getParts() ) {
             String fileName = getFileName( part );
             String fullPath = uploadPath + File.separator + fileName;
-            part.write( fullPath );
+            part.write(fullPath);
         }
         this.getServletContext().getRequestDispatcher("/WEB-INF/fichier.jsp").forward(request, response);
     }
