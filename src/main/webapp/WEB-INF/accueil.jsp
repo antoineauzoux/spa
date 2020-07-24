@@ -30,10 +30,10 @@
             <ul class="nav navbar-nav ml-auto text-uppercase">
                 <li class="nav-item" role="presentation"></li>
                 <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" data-toggle="modal"
-                                                            data-target="#modalInscription">sign in</a>
+                                                            data-target="#modalInscription" href="">sign in</a>
                 </li>
                 <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" data-toggle="modal"
-                                                            data-target="#orangeModalSubscription">log in</a></li>
+                                                            data-target="#orangeModalSubscription" >log in</a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger"
                                                             href="#contact">Contact</a></li>
             </ul>

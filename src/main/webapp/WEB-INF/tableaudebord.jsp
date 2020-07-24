@@ -48,16 +48,16 @@ ${ sessionScope.prenom }
 
 
 <!-- Team -->
-<section id="team-carte" class="pb-5">
+<section id="team" class="pb-5">
     <div class="container">
-        <h5 class="section-title h1">OUR TEAM</h5>
+        <h5 class="section-title">Tableau de bord</h5>
         <div class="row justify-content-center">
             <!-- Team member -->
             <%
                 ArrayList<Chien> listeChiens = (ArrayList<Chien>) request.getAttribute("listeChiens");
                 for (Chien monChien : listeChiens) {
             %>
-            <div class="col-xs-12 col-sm-8 col-md-6">
+            <div class="col-xs-12 col-sm-8 col-md-4">
                 <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
                     <div class="mainflip">
                         <div class="frontside">
@@ -77,7 +77,7 @@ ${ sessionScope.prenom }
                                 <div class="card-body mt-4">
                                     <h4 class="card-title text-center "><%= monChien.getNom() %>.
                                     </h4>
-                                    <p class="card-text">N° <%= monChien.getPuceChien() %>.
+                                    <p class="card-text" name="puceChien">N° <%= monChien.getPuceChien() %>.
                                     </p>
                                     <p class="card-text"><%= monChien.getCouleur() %>.
                                     </p>
@@ -92,7 +92,8 @@ ${ sessionScope.prenom }
                                         </li>
                                         <li class="list-inline-item">
                                             <button type="button" class="btn btn-warning btn-circle"><i
-                                                    class="fa fa-times"></i>
+                                                    class="fa fa-times" class="trigger-btn" data-toggle="modal"
+                                                    data-target="#modalSupprimerChien" onclick="modalSuppression(<%= monChien.getPuceChien() %>)"></i>
                                             </button>
                                         </li>
                                     </ul>
@@ -235,9 +236,33 @@ ${ sessionScope.prenom }
         </div>
     </div>
 </form>
+<form method="post" action="SupprimerChienServlet">
+    <input type="hidden" name="idChien" id="idChienHidden">
+    <div id="modalSupprimerChien" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="icon-box">
+                        <i class="material-icons">&#xE5CD;</i>
+                    </div>
+                    <h4 class="modal-title">Confirmer ?</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Êtes-vous certain de vous vouloir supprimer ce chien?</p><p id="pIdChien"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" data-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
 <script src="assets/js/script.min.js"></script>
+<script src="assets/js/cda-script.js"></script>
 </body>
 </html>

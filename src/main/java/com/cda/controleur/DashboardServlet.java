@@ -29,6 +29,5 @@ public class DashboardServlet extends AbstractServletController {
         ArrayList<Chien> listeChiens = (ArrayList<Chien>) chienService.selectAll();
         request.setAttribute("listeChiens", listeChiens);
         this.getServletContext().getRequestDispatcher("/WEB-INF/tableaudebord.jsp").forward(request, response);
-
     }
 }
