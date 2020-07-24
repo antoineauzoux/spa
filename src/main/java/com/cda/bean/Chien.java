@@ -12,4 +12,7 @@ public class Chien {
     private String nom;
     private String couleur;
     private int age;
+    private String image;
+    private int idUtilisateur;
+
 }

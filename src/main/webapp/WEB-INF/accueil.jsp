@@ -208,12 +208,12 @@
 <footer>
     <div class="container">
         <div class="row">
-            <div class="col-md-4"><span class="copyright">Copyright&nbsp;© Dog Dog 2020</span></div>
+            <div class="col-md-4"><span class="copyright">Copyright&nbsp;© Dog & Dog 2020</span></div>
             <div class="col-md-4">
                 <ul class="list-inline social-buttons">
-                    <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                    <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li class="list-inline-item"><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    <li class="list-inline-item"><a href="https://twitter.com/dogdog67499013"><i class="fa fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="https://www.facebook.com/DogDog-110593860738671"><i class="fa fa-facebook"></i></a></li>
+                    <li class="list-inline-item"><a href="https://www.linkedin.com/in/dog-dog-a416b61b3"><i class="fa fa-linkedin"></i></a></li>
                 </ul>
             </div>
             <div class="col-md-4">
@@ -277,7 +277,7 @@
 
                 <!--Body-->
                 <div class="modal-body">
-                    <div class="md-form mb-5">
+                    <div class="md-form">
                         <input type="text" id="nom" name="nom" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="nom">Nom</label>
                     </div>

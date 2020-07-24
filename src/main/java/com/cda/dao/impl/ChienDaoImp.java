@@ -30,7 +30,7 @@ public class ChienDaoImp implements IChienDao {
     public List<Chien> selectAll() {
         List<Chien> chiens = new ArrayList<>();
         try {
-            PreparedStatement ps = connection.prepareStatement("select puceChien, nomChien, couleurChien, ageChien from chien");
+            PreparedStatement ps = connection.prepareStatement("select * from chien");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Chien chien = new Chien();
@@ -38,6 +38,7 @@ public class ChienDaoImp implements IChienDao {
                 chien.setNom(rs.getString(2));
                 chien.setCouleur(rs.getString(3));
                 chien.setAge(rs.getInt(4));
+                chien.setImage(rs.getString(5));
                 chiens.add(chien);
             }
         } catch (SQLException e) {
@@ -48,7 +49,7 @@ public class ChienDaoImp implements IChienDao {
 
     @Override
     public void deleteById(Chien p) {
-        String request = "delete from clients where id_client = ?";
+        String request = "delete from chien where puceChien = ?";
         PreparedStatement ps = null;
         try {
             ps = connection.prepareStatement(request);
@@ -87,12 +88,14 @@ public class ChienDaoImp implements IChienDao {
     @Override
     public void create(Chien p) {
         try {
-            String request = "INSERT INTO chien (puceChien, nomChien, couleurChien, ageChien,idRace,idUtilisateur ) VALUES (?,?,?,?,?,?)";
+            String request = "INSERT INTO chien (puceChien, nomChien, couleurChien, ageChien, imgChien, idUtilisateur) VALUES (?,?,?,?,?,?)";
             PreparedStatement ps = connection.prepareStatement(request);
             ps.setInt(1, p.getPuceChien());
             ps.setString(2, p.getNom());
             ps.setString(3, p.getCouleur());
             ps.setInt(4, p.getAge());
+            ps.setString(5, p.getImage());
+            ps.setInt(6, p.getIdUtilisateur());
             ps.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
