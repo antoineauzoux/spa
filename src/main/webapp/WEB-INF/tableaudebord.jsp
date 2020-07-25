@@ -48,15 +48,15 @@ ${ sessionScope.prenom }
 
 <body id="page-top">
 <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark" id="mainNav">
-    <div class="container"><a class="navbar-brand" href="#page-top">Dog&amp;Dog</a>
+    <div class="container"><a class="navbar-brand" href="#/Ac">Dog&amp;Dog</a>
         <button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right"
                 type="button" data-toogle="collapse" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="nav navbar-nav ml-auto text-uppercase">
                 <li class="nav-item" role="presentation"></li>
-                <li class="nav-item" role="presentation"></li>
-                <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="#team">log out</a>
+                <li class="nav-item" role="presentation">Bienvenue ${ sessionScope.prenom }.</li>
+                <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" href="/projet/accueil">log out</a>
                 </li>
                 <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger"
                                                             href="#contact">Contact</a></li>
@@ -106,13 +106,15 @@ ${ sessionScope.prenom }
                                         <li class="list-inline-item">
                                             <button type="button" class="btn btn-primary btn-circle"><i
                                                     class="fa fa-list" data-toggle="modal"
-                                                    data-target="#modalCreerChien"></i>
+                                                    data-target="#modalUpdateChien"
+                                                    onclick="modalUpdate(<%= monChien.getPuceChien() %>)"></i>
                                             </button>
                                         </li>
                                         <li class="list-inline-item">
                                             <button type="button" class="btn btn-warning btn-circle"><i
                                                     class="fa fa-times" class="trigger-btn" data-toggle="modal"
-                                                    data-target="#modalSupprimerChien" onclick="modalSuppression(<%= monChien.getPuceChien() %>)"></i>
+                                                    data-target="#modalSupprimerChien"
+                                                    onclick="modalSuppression(<%= monChien.getPuceChien() %>)"></i>
                                             </button>
                                         </li>
                                     </ul>
@@ -124,6 +126,14 @@ ${ sessionScope.prenom }
             </div>
             <%} %>
             <!-- ./Team member -->
+            <div class="frontside">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <button type="button" class="btn btn-default btn-circle btn-xl" data-toggle="modal"
+                                data-target="#modalCreerChien"><i class="fa fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -206,7 +216,7 @@ ${ sessionScope.prenom }
         </div>
     </div>
 </footer>
-<form method="post" action="AjoutChienServlet" enctype="multipart/form-data">
+<form method="post" class="was-validated" action="AjoutChienServlet" enctype="multipart/form-data">
     <div class="modal fade" id="modalCreerChien" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-notify modal-warning" role="document">
@@ -223,27 +233,35 @@ ${ sessionScope.prenom }
                 <!--Body-->
                 <div class="modal-body">
                     <div class="md-form">
-                        <input type="text" id="nomChien" name="nomChien" class="form-control validate">
-                        <label data-error="wrong" data-success="right" for="nomChien">Nom du chien</label>
+                        <label data-error="wrong" data-success="right" for="nomChien" required>Nom du chien</label>
+                        <input type="text" id="nomChien" name="nomChien" class="form-control validate" required>
+                        <div class="valid-feedback">Valide.</div>
+                        <div class="invalid-feedback">Veuillez remplir ce champ.</div>
                     </div>
 
                     <div class="md-form">
-                        <input type="number" id="numeroPuce" name="numeroPuce" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="numeroPuce">Numéro de puce</label>
+                        <input type="number" id="numeroPuce" name="numeroPuce" class="form-control validate" required>
+                        <div class="valid-feedback">Valide.</div>
+                        <div class="invalid-feedback">Veuillez remplir ce champ.</div>
                     </div>
 
                     <div class="md-form">
-                        <input type="text" id="couleurChien" name="couleurChien" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="couleurChien">Couleur du chien</label>
+                        <input type="text" id="couleurChien" name="couleurChien" class="form-control validate" required>
+                        <div class="valid-feedback">Valide.</div>
+                        <div class="invalid-feedback">Veuillez remplir ce champ.</div>
                     </div>
 
                     <div class="md-form">
-                        <input type="number" id="ageChien" name="ageChien" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="ageChien">Âge du chien</label>
+                        <input type="number" id="ageChien" name="ageChien" class="form-control validate" required>
+                        <div class="valid-feedback">Valide.</div>
+                        <div class="invalid-feedback">Veuillez remplir ce champ.</div>
                     </div>
-
                     <div class="md-form">
-                        <input type="file" id="imgChien" name="imgChien" class="form-control validate" accept="image/*" multiple
+                        <input type="file" id="imgChien" name="imgChien" class="form-control validate" accept="image/*"
+                               multiple
                                onchange="readFilesAndDisplayPreview(this.files);">
                     </div>
                 </div>
@@ -256,6 +274,57 @@ ${ sessionScope.prenom }
         </div>
     </div>
 </form>
+<form method="post" class="was-validated" action="UpdateChienServlet">
+    <input type="hidden" name="idChienUpdate" id="idChienUpdate">
+    <div class="modal fade" id="modalUpdateChien" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-notify modal-warning" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header text-center">
+                    <h4 class="modal-title white-text w-100 font-weight-bold py-2">Modifier une information.</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="white-text">&times;</span>
+                    </button>
+                </div>
+                <!--Body-->
+                <div class="modal-body">
+                    <div class="md-form">
+                        <label data-error="wrong" data-success="right" for="nomChienUpdate" required>Nom du
+                            chien</label>
+                        <input type="text" id="nomChienUpdate" name="nomChienUpdate" class="form-control validate"
+                               required>
+                        <div class="valid-feedback">Valide.</div>
+                        <div class="invalid-feedback">Veuillez remplir ce champ.</div>
+                    </div>
+                    <div class="md-form">
+                        <label data-error="wrong" data-success="right" for="couleurChienUpdate">Couleur du chien</label>
+                        <input type="text" id="couleurChienUpdate" name="couleurChienUpdate"
+                               class="form-control validate" required>
+                        <div class="valid-feedback">Valide.</div>
+                        <div class="invalid-feedback">Veuillez remplir ce champ.</div>
+                    </div>
+
+                    <div class="md-form">
+                        <label data-error="wrong" data-success="right" for="ageChienUpdate">Âge du chien</label>
+                        <input type="number" id="ageChienUpdate" name="ageChienUpdate" class="form-control validate"
+                               required>
+                        <div class="valid-feedback">Valide.</div>
+                        <div class="invalid-feedback">Veuillez remplir ce champ.</div>
+                    </div>
+                    <!--Footer-->
+                    <div class="modal-footer justify-content-center">
+                        <button type="submit" class="btn btn-outline-warning waves-effect">Envoyer</button>
+                    </div>
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
+    </div>
+</form>
+
+
 <form method="post" action="SupprimerChienServlet">
     <input type="hidden" name="idChien" id="idChienHidden">
     <div id="modalSupprimerChien" class="modal fade">
@@ -269,7 +338,8 @@ ${ sessionScope.prenom }
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <p>Êtes-vous certain de vous vouloir supprimer ce chien?</p><p id="pIdChien"></p>
+                    <p>Êtes-vous certain de vous vouloir supprimer ce chien?</p>
+                    <p id="pIdChien"></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-info" data-dismiss="modal">Annuler</button>

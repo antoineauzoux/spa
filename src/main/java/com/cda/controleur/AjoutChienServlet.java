@@ -3,9 +3,7 @@ package com.cda.controleur;
 import com.cda.bean.Chien;
 import com.cda.controleur.conf.AbstractServletController;
 import com.cda.service.IChienService;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;

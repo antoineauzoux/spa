@@ -27,7 +27,7 @@
                                                             data-target="#modalInscription" href="">sign in</a>
                 </li>
                 <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger" data-toggle="modal"
-                                                            data-target="#orangeModalSubscription" >log in</a></li>
+                                                            data-target="#orangeModalSubscription" href="">log in</a></li>
                 <li class="nav-item" role="presentation"><a class="nav-link js-scroll-trigger"
                                                             href="#contact">Contact</a></li>
             </ul>
@@ -225,7 +225,7 @@
         </div>
     </div>
 </footer>
-<form method="post" action="AuthentificationServlet">
+<form method="post" action="AuthentificationServlet" class="was-validated">
     <div class="modal fade" id="orangeModalSubscription" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-notify modal-warning" role="document">
@@ -242,13 +242,17 @@
                 <!--Body-->
                 <div class="modal-body">
                     <div class="md-form mb-5">
-                        <input type="text" id="form3" name="identifiant" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="form3">Identifiant</label>
+                        <input type="text" id="form3" name="identifiant" class="form-control validate" required>
+                        <div class="valid-feedback">Valide.</div>
+                        <div class="invalid-feedback">Veuillez remplir ce champ.</div>
                     </div>
 
                     <div class="md-form">
-                        <input type="text" id="form2" name="password" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="form2">Mot de passe</label>
+                        <input type="text" id="form2" name="password" class="form-control validate" required>
+                        <div class="valid-feedback">Valide.</div>
+                        <div class="invalid-feedback">Veuillez remplir ce champ.</div>
                     </div>
                 </div>
 
@@ -261,7 +265,7 @@
         </div>
     </div>
 </form>
-<form method="post" action="InscriptionServlet">
+<form method="post" action="InscriptionServlet" class="was-validated">
     <div class="modal fade" id="modalInscription" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
         <div class="modal-dialog modal-notify modal-warning" role="document">
@@ -278,28 +282,38 @@
                 <!--Body-->
                 <div class="modal-body">
                     <div class="md-form">
-                        <input type="text" id="nom" name="nom" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="nom">Nom</label>
+                        <input type="text" id="nom" name="nom" class="form-control validate" required>
+                        <div class="valid-feedback">Valide.</div>
+                        <div class="invalid-feedback">Veuillez remplir ce champ.</div>
                     </div>
 
                     <div class="md-form">
-                        <input type="text" id="prenom" name="prenom" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="prenom">Prénom</label>
+                        <input type="text" id="prenom" name="prenom" class="form-control validate" required>
+                        <div class="valid-feedback">Valide.</div>
+                        <div class="invalid-feedback">Veuillez remplir ce champ.</div>
                     </div>
 
                     <div class="md-form">
-                        <input type="text" id="mail" name="mail" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="mail">Email</label>
+                        <input type="text" id="mail" name="mail" class="form-control validate" required>
+                        <div class="valid-feedback">Valide.</div>
+                        <div class="invalid-feedback">Veuillez remplir ce champ.</div>
                     </div>
 
                     <div class="md-form">
-                        <input type="text" id="login" name="login" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="login">Login</label>
+                        <input type="text" id="login" name="login" class="form-control validate" required>
+                        <div class="valid-feedback">Valide.</div>
+                        <div class="invalid-feedback">Veuillez remplir ce champ.</div>
                     </div>
 
                     <div class="md-form">
-                        <input type="text" id="password" name="password" class="form-control validate">
                         <label data-error="wrong" data-success="right" for="password">Mot de passe</label>
+                        <input type="text" id="password" name="password" class="form-control validate" required>
+                        <div class="valid-feedback">Valide.</div>
+                        <div class="invalid-feedback">Veuillez remplir ce champ.</div>
                     </div>
                 </div>
 

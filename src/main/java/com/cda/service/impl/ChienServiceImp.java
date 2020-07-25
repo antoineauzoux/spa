@@ -15,8 +15,7 @@ public class ChienServiceImp implements IChienService {
     IChienDao iChienDaoDao;
 
     @Override
-    public List<Chien> selectAll() {
-        return iChienDaoDao.selectAll();
+    public List<Chien> selectAll() { return iChienDaoDao.selectAll();
     }
 
     @Override
