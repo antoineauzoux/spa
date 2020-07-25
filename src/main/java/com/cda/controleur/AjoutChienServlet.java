@@ -40,6 +40,9 @@ public class AjoutChienServlet extends AbstractServletController {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             Part part = request.getPart("imgChien") ;
             String fileName = getFileName( part );
+            if(fileName.equals("")){
+                fileName = "Default.jpg";
+            }
             String fullPath = uploadPath + File.separator + fileName;
             part.write(fullPath);
 

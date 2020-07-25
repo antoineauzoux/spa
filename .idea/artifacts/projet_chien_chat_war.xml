@@ -7,7 +7,7 @@
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="projet-chien-chat.war">
+    <root id="archive" name="projet.war">
       <element id="artifact" artifact-name="projet-chien-chat:war exploded" />
     </root>
   </artifact>
