@@ -130,3 +130,4 @@ src/test/java/persistence/
 target/generated-sources/
 target/generated-test-sources/
 /.idea/
+/target/
