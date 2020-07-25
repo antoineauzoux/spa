@@ -22,7 +22,7 @@ import java.io.IOException;
         maxFileSize         = 1024 * 1024 * 10, // 10 MB
         maxRequestSize      = 1024 * 1024 * 15) // 15 MB
 public class AjoutChienServlet extends AbstractServletController {
-    public static final String IMAGES_FOLDER = "assets/img";
+    public static final String IMAGES_FOLDER = "img";
     public String uploadPath;
 
     @Autowired
@@ -40,8 +40,12 @@ public class AjoutChienServlet extends AbstractServletController {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             Part part = request.getPart("imgChien") ;
             String fileName = getFileName( part );
-            String fullPath = uploadPath + File.separator + fileName;
-            part.write(fullPath);
+            if(fileName.equals("")) {
+                fileName = "Default.jpg";
+            } else {
+                String fullPath = uploadPath + File.separator + fileName;
+                part.write(fullPath);
+            }
 
 
         Chien chien = new Chien();
