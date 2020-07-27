@@ -1,7 +1,6 @@
 package com.cda.dao.impl;
 
 import com.cda.bean.Compte;
-import com.cda.bean.Utilisateur;
 import com.cda.dao.ICompteDao;
 import com.cda.dao.config.IDatabaseConnection;
 import org.springframework.beans.factory.annotation.Autowired;

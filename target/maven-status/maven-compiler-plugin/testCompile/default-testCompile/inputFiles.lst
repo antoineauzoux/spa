@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 /Users/fethi/git repos/spa/src/test/java/program/TestUtilisateur.java
 /Users/fethi/git repos/spa/src/test/java/persistence/ChienDaoImpTest.java
 /Users/fethi/git repos/spa/src/test/java/factory/ConnexionTest.java
+=======
+C:\git-repos\cda-spa\src\test\java\factory\ConnexionTest.java
+C:\git-repos\cda-spa\src\test\java\program\TestUtilisateur.java
+>>>>>>> dev

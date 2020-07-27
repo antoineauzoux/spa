@@ -3,9 +3,7 @@ package com.cda.controleur;
 import com.cda.bean.Chien;
 import com.cda.controleur.conf.AbstractServletController;
 import com.cda.service.IChienService;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.SessionAttribute;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -22,7 +20,7 @@ import java.io.IOException;
         maxFileSize         = 1024 * 1024 * 10, // 10 MB
         maxRequestSize      = 1024 * 1024 * 15) // 15 MB
 public class AjoutChienServlet extends AbstractServletController {
-    public static final String IMAGES_FOLDER = "assets/img";
+    public static final String IMAGES_FOLDER = "img";
     public String uploadPath;
 
     @Autowired
@@ -40,11 +38,20 @@ public class AjoutChienServlet extends AbstractServletController {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             Part part = request.getPart("imgChien") ;
             String fileName = getFileName( part );
+<<<<<<< HEAD
             if(fileName.equals("")){
                 fileName = "Default.jpg";
             }
             String fullPath = uploadPath + File.separator + fileName;
             part.write(fullPath);
+=======
+            if(fileName.equals("")) {
+                fileName = "Default.jpg";
+            } else {
+                String fullPath = uploadPath + File.separator + fileName;
+                part.write(fullPath);
+            }
+>>>>>>> dev
 
 
         Chien chien = new Chien();

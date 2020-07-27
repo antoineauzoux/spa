@@ -11,11 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/SupprimerChienServlet")
-public class SupprimerChienServlet extends AbstractServletController {
+@WebServlet("/UpdateChienServlet")
+public class UpdateChienServlet extends AbstractServletController {
 
     @Autowired
-    IChienService chienService;
+    IChienService iChienService;
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -23,9 +23,11 @@ public class SupprimerChienServlet extends AbstractServletController {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Chien chien = new Chien();
-        int numeroPuce = Integer.parseInt(request.getParameter("idChien"));
-        chien.setPuceChien(numeroPuce);
-        chienService.deleteById(chien);
+        chien.setNom(request.getParameter("nomChienUpdate"));
+        chien.setAge(Integer.parseInt(request.getParameter("ageChienUpdate")));
+        chien.setCouleur(request.getParameter("couleurChienUpdate"));
+        chien.setPuceChien(Integer.parseInt(request.getParameter("idChienUpdate")));
+        iChienService.update(chien);
         this.getServletContext().getRequestDispatcher("/DashboardServlet").forward(request, response);
     }
 }
